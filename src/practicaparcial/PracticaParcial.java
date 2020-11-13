@@ -52,6 +52,7 @@ public class PracticaParcial {
             id = userData.id;
             name = userData.nom;
             surnames = userData.llinatges;
+            email = userData.correuElectronic;
             nAccess = userData.numAccessos;
             switch (userData.tipus){
                 case "0":
