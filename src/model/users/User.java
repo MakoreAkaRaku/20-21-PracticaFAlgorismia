@@ -5,5 +5,19 @@ package model.users;
  * @author Bernat Galmés Rubert
  */
 public class User {
-    
+
+    private long id;
+    private String name;
+    private String surname;
+    private String email;
+    private long numAccess;
+
+    public User(long id, String name, String surname, String email, long numAccess) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.numAccess = numAccess;
+    }
+
 }
