@@ -21,6 +21,7 @@ public class PracticaParcial {
 
     public PracticaParcial() throws Exception {
         this.users = loadUsers();
+        System.out.println("Todo funciona de momento!");
         this.partides = loadGames();
     }
 
@@ -67,7 +68,13 @@ public class PracticaParcial {
                 default:
                     throw new Exception("Could not define user type");
             }
+
         }
+
+        for(User user: users) {
+            System.out.println(user.toString());
+        }
+
         UsersRepository ur = new UserRepositoryImpl(users);
         // TODO: Contruir i retornar l'objecte amb el repository
         return ur;

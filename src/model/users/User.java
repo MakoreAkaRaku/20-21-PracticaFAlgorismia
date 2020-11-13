@@ -20,4 +20,14 @@ public class User {
         this.numAccess = numAccess;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", numAccess=" + numAccess +
+                '}';
+    }
 }
