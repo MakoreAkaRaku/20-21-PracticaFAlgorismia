@@ -5,14 +5,16 @@ FinalProject for Algorithm's subject
 Cosas pendientes: 
 
 
--Crear las clases que hay en el UMl (Marc)
+-Crear las clases que hay en el UML (Marc)
 
--Ha desaparecido el paquete chesspieces
+-Ha desaparecido el paquete chesspieces (Nunca desapareció :) )
 
--Crear la función que lee el csv loadUsers() (Toni) - le pido un detalle al profe y eso ya esta casi acabado
+-Crear la función que lee el csv loadUsers() (Toni) - le pido un detalle al profe y eso ya esta casi acabado (Done by Marc y Toni)
 
 
 Preguntas para el profe: 
+
+Marc:- Revisión del paquete chesspieces: preguntar al profesor sobre la clase ChessPiece y los recursos estáticos y finales.
 
 -En el enunciado no sale nada del correo pero en el codigo plantilla si que sale el correo, lo guardamos o no?
 
