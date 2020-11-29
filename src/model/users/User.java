@@ -4,7 +4,7 @@ package model.users;
  * 
  * @author Bernat Galmés Rubert
  */
-public class User {
+public abstract class User {
 
     private long id;
     private String name;
@@ -29,5 +29,27 @@ public class User {
                 ", email='" + email + '\'' +
                 ", numAccess=" + numAccess +
                 '}';
+    }
+
+    public abstract String getType();
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public long getNumAccess() {
+        return numAccess;
     }
 }

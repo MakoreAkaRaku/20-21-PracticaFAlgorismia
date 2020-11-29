@@ -25,7 +25,7 @@ public class ChessBoardPanel extends JPanel {
     private int size;
 
     /**
-     * Costructor del Tabuler del joc Reserva espai per a totes les caselles
+     * Costructor del Tauler del joc Reserva espai per a totes les caselles
      *
      * @param n Tamany del tauler n x n
      */

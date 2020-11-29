@@ -2,12 +2,11 @@ package practicaparcial;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import model.game.EstatTauler;
 import model.game.Partida;
-import model.users.Arbiter;
-import model.users.Player;
-import model.users.User;
-import repository.UserRepositoryImpl;
-import repository.UsersRepository;
+import model.users.*;
+import repository.*;
 import view.UsersWindow;
 
 /**
@@ -21,7 +20,6 @@ public class PracticaParcial {
 
     public PracticaParcial() throws Exception {
         this.users = loadUsers();
-        System.out.println("Todo funciona de momento!");
         this.partides = loadGames();
     }
 
@@ -35,9 +33,20 @@ public class PracticaParcial {
     }
 
     private List<Partida> loadGames() throws Exception {
+        Player p1;
+        Player p2;
+        Arbiter arb;
+        EstatTauler et;
+        long idMatch;
         List<Partida> partides = new ArrayList<>();
         List<DataLoader.GameData> gamesData = DataLoader.gamesLoader();
         for (DataLoader.GameData gameData : gamesData) {
+            idMatch  = gameData.idPartida;
+            p1 = (Player) users.findOne(gameData.jugador1);
+            p2 = (Player) users.findOne(gameData.jugador2);
+            arb = (Arbiter) users.findOne(gameData.arbitre);
+            et = new EstatTauler(gameData.tauler);
+            partides.add(new Partida(idMatch,p1,p2,arb,et));
             // TODO: Codi per emplenar la llista de partides
         }
 
@@ -57,10 +66,10 @@ public class PracticaParcial {
             nAccess = userData.numAccessos;
             switch (userData.tipus){
                 case "0":
-                    users.add(new Arbiter(id, name, surnames, email, nAccess));
+                    users.add(new Player(id, name, surnames, email, nAccess));
                     break;
                 case "1":
-                    users.add(new Arbiter(id, name, surnames, email, nAccess));
+                    users.add(new Member(id, name, surnames, email, nAccess));
                     break;
                 case "2":
                     users.add(new Arbiter(id, name, surnames, email, nAccess));
@@ -70,13 +79,8 @@ public class PracticaParcial {
             }
 
         }
-
-        for(User user: users) {
-            System.out.println(user.toString());
-        }
-
         UsersRepository ur = new UserRepositoryImpl(users);
-        // TODO: Contruir i retornar l'objecte amb el repository
+        // TODO: Construir i retornar l'objecte amb el repository
         return ur;
     }
 

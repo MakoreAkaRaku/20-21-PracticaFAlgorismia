@@ -12,12 +12,15 @@ public class UserRepositoryImpl implements UsersRepository {
 
     @Override
     public User findOne(long id) throws NotFoundException {
-        return null;
+        if (id  <= 0){
+            return null;
+        }
+        return userList.get((int) id);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userList;
     }
 
     @Override

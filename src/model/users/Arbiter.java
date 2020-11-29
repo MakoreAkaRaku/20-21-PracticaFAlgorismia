@@ -8,4 +8,9 @@ public class Arbiter extends User{
         super(id, name, surname, email, numAccess);
         this.numArbitedGames = numArbitedGames;
     }
+
+    @Override
+    public String getType(){
+        return "Arbitre";
+    }
 }

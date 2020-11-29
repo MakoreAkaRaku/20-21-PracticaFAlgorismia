@@ -82,8 +82,26 @@ public class UsersWindow extends JFrame {
         @Override
         public Object getValueAt(final int rowIndex, final int columnIndex) {
             User user = users.findAll().get(rowIndex);
+            Object o = null;
             // TODO: implement it
-            return null;
+            switch (columnIndex){
+                case 0:
+                    o = user.getId();
+                    break;
+                case 1:
+                    o = user.getName();
+                    break;
+                case 2:
+                    o = user.getEmail();
+                    break;
+                case 3:
+                    o = user.getType();
+                    break;
+                case 4:
+                    o = new JButton("Més info.");
+                    break;
+            }
+            return o;
         }
         
     }
@@ -108,14 +126,24 @@ public class UsersWindow extends JFrame {
             /*Checking the row or column is valid or not*/
             if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
                 Object value = table.getValueAt(row, column);
-                
-                
                 if (value instanceof JButton) {
+                    System.out.println(row+" row / column "+column);
                     /*perform a click event*/
-//                      users.findAll().get(row); // TODO: consulta usuari seleccionar, adaptar a la teva implementació
+                    User u = users.findAll().get(row); // TODO: consulta usuari seleccionar, adaptar a la teva implementació
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         @Override
                         public void run() {
+                            switch (u.getType()){
+                                case "Jugador":
+                                    //
+                                    break;
+                                case "Soci":
+
+                                    break;
+                                case "Arbitre":
+
+                                    break;
+                            }
                             // TODO: implement it
                         }
                     });
