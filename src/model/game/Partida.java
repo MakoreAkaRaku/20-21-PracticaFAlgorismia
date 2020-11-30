@@ -19,6 +19,7 @@ public class Partida {
     private Player player2;
     private Arbiter arbiter;
     private EstatTauler state;
+    private Player winner;
 
     /**
      * Defines a Match by inserting Match's id, player one, player two, the arbiter and the state of the ChessBoard.
@@ -35,18 +36,31 @@ public class Partida {
         player2 = p2;
         arbiter = arb;
         state =  et;
-    }
-
-    public Player getWinner(){
         boolean p1HasKing = state.iswKingPieceAlive();
         boolean p2HasKing = state.isbKingPieceAlive();
         boolean matchNotFinished = p1HasKing &&  p2HasKing;
+
         if (matchNotFinished){
-            return null;
+            winner = null;
+            player2.addMatchNotFinished();
+            player1.addMatchNotFinished();
         }else if (p1HasKing){
-            return player1;
+            winner = player1;
+            player1.addMatchWon();
         }else{
-            return player2;
+            winner = player2;
+            player2.addMatchWon();
         }
+        player1.addMatchPlayed();
+        player2.addMatchPlayed();
+        arbiter.addArbitedMatch();
+    }
+
+    /**
+     * Returns the Player that has won the match. Returns null in case nobody has finished the game yet.
+     * @return
+     */
+    public Player getWinner(){
+        return winner;
     }
 }
