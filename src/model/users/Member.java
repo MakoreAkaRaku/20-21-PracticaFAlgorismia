@@ -7,6 +7,6 @@ public class Member extends User {
 
     @Override
     public String getType(){
-        return "Soci";
+        return "Member";
     }
 }

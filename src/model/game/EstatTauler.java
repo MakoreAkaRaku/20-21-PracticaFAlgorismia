@@ -2,7 +2,6 @@ package model.game;
 
 import model.chesspieces.*;
 import utils.PositionCode;
-import view.ChessBoardPanel;
 
 /**
  * Representació de l'estat d'un tauler d'escacs en un instant donat.
@@ -12,22 +11,23 @@ import view.ChessBoardPanel;
  * 
  * @author Bernat Galmés Rubert
  */
-public class EstatTauler extends ChessBoardPanel {
+public class EstatTauler{
     private static final int BOARDSIZE = 8;
-    private boolean wKingPieceAlive;
-    private boolean bKingPieceAlive;
+    private ChessPiece[][] boardPieces;
+    private boolean whiteKingPieceAlive;
+    private boolean blackKingPieceAlive;
 
     public EstatTauler(String state){
-        super(BOARDSIZE);
-        wKingPieceAlive = false;
-        bKingPieceAlive = false;
+        boardPieces =  new ChessPiece[BOARDSIZE][BOARDSIZE];
+        whiteKingPieceAlive = false;
+        blackKingPieceAlive = false;
         defineBoardState(state);
     }
 
     /**
      * Defines the state of the loaded board from memory by reading string state and tokenizated.
      */
-    public void defineBoardState(String st){
+    private void defineBoardState(String st){
         PositionCode position;
         ChessPiece piece;
         int row = 0;
@@ -36,34 +36,36 @@ public class EstatTauler extends ChessBoardPanel {
         for (String pieceDataCoded : piecesDataCoded){
             String[] pieceData = pieceDataCoded.split("-");
             position = new PositionCode(pieceData[0]);      //Getting the position of The piece.
-            piece = getTypePiece(pieceData[1]);             //Getting piece Type.
-            this.colocarPesa(position.getRow(),position.getColumn(),piece);
+            row = position.getRow() - 1;
+            column = position.getColumn() - 1;
+            piece = getPieceType(pieceData[1]);             //Getting piece Type.
+            boardPieces[row][column] = piece;
             if (piece instanceof King){                     //Look for King's chess piece.
-                if (pieceData[2] == "0"){
-                    wKingPieceAlive = true;
+                if (pieceData[2].equals("0")){
+                    whiteKingPieceAlive = true;
                 }else{
-                    bKingPieceAlive = true;
+                    blackKingPieceAlive = true;
                 }
             }
         }
     }
 
 
-    public boolean isbKingPieceAlive() {
-        return bKingPieceAlive;
+    public boolean isBlackKingPieceAlive() {
+        return blackKingPieceAlive;
     }
 
-    public boolean iswKingPieceAlive() {
-        return wKingPieceAlive;
+    public boolean isWhiteKingPieceAlive() {
+        return whiteKingPieceAlive;
     }
 
     /**
      * Returns the chess piece named on the string.
-     * @param namePiece
+     * @param pieceName
      * @return
      */
-    public ChessPiece getTypePiece(String namePiece){
-        switch (namePiece){
+    private ChessPiece getPieceType(String pieceName){
+        switch (pieceName){
             case "bishop":
                 return new Bishop();
             case "kight":
@@ -79,5 +81,9 @@ public class EstatTauler extends ChessBoardPanel {
             default:
                 return null;
         }
+    }
+
+    public ChessPiece[][] getBoardPieces() {
+        return boardPieces;
     }
 }

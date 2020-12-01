@@ -33,11 +33,15 @@ public class PracticaParcial {
     }
 
     private List<Partida> loadGames() throws Exception {
+        Partida match;
         Player p1;
         Player p2;
         Arbiter arb;
         EstatTauler et;
         long idMatch;
+        boolean p1HasKing;
+        boolean p2HasKing;
+        boolean matchNotFinished;
         List<Partida> partides = new ArrayList<>();
         List<DataLoader.GameData> gamesData = DataLoader.gamesLoader();
         for (DataLoader.GameData gameData : gamesData) {
@@ -46,10 +50,25 @@ public class PracticaParcial {
             p2 = (Player) users.findOne(gameData.jugador2);
             arb = (Arbiter) users.findOne(gameData.arbitre);
             et = new EstatTauler(gameData.tauler);
-            partides.add(new Partida(idMatch,p1,p2,arb,et));
-            // TODO: Codi per emplenar la llista de partides
+            p1HasKing = et.isWhiteKingPieceAlive();     //Checking and filling info about which player has won,
+            p2HasKing = et.isBlackKingPieceAlive();     //
+            matchNotFinished = p1HasKing && p2HasKing;  //
+            if (matchNotFinished){                      //
+                p1.addMatchNotFinished();               //
+                p2.addMatchNotFinished();               //
+            }else if(p1HasKing){                        //
+                p1.addMatchWon();                       //
+                p2.addMatchLost();                      //
+            }else if(p2HasKing){                        //
+                p2.addMatchWon();                       //
+                p1.addMatchLost();                      //
+            }                                           //
+            match = new Partida(idMatch,p1,p2,arb,et);  //
+            p1.addMatchPlayed(match);                   //
+            p2.addMatchPlayed(match);                   //
+            arb.addArbitragedMatch(match);              //
+            partides.add(match);
         }
-
         return partides;
     }
 
@@ -80,7 +99,6 @@ public class PracticaParcial {
 
         }
         UsersRepository ur = new UserRepositoryImpl(users);
-        // TODO: Construir i retornar l'objecte amb el repository
         return ur;
     }
 

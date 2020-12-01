@@ -15,6 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
+
+import model.chesspieces.ChessPiece;
+import model.users.Arbiter;
+import model.users.Player;
 import model.users.User;
 import repository.UsersRepository;
 
@@ -83,7 +87,6 @@ public class UsersWindow extends JFrame {
         public Object getValueAt(final int rowIndex, final int columnIndex) {
             User user = users.findAll().get(rowIndex);
             Object o = null;
-            // TODO: implement it
             switch (columnIndex){
                 case 0:
                     o = user.getId();
@@ -98,7 +101,9 @@ public class UsersWindow extends JFrame {
                     o = user.getType();
                     break;
                 case 4:
-                    o = new JButton("Més info.");
+                    if (user.getType() == "Arbiter" || user.getType() == "Player"){
+                        o = new JButton("About...");
+                    }
                     break;
             }
             return o;
@@ -127,24 +132,35 @@ public class UsersWindow extends JFrame {
             if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
                 Object value = table.getValueAt(row, column);
                 if (value instanceof JButton) {
-                    System.out.println(row+" row / column "+column);
                     /*perform a click event*/
                     User u = users.findAll().get(row); // TODO: consulta usuari seleccionar, adaptar a la teva implementació
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         @Override
                         public void run() {
+                            ChessPiece[][] cp;
                             switch (u.getType()){
-                                case "Jugador":
+                                case "Player":
                                     //
+                                    Player p = (Player) u;
+                                    chessWindow.reset();
+                                    chessWindow.putTextAreaText(u.toString());
+                                    if (p.getMatchesPlayed().size() > 0){
+                                        cp =p.getMatchesPlayed().get(0).getState().getBoardPieces();
+                                        chessWindow.colocaPeces(cp);
+                                    }
+                                    chessWindow.setVisible(true);
                                     break;
-                                case "Soci":
-
-                                    break;
-                                case "Arbitre":
-
+                                case "Arbiter":
+                                    Arbiter a = (Arbiter) u;
+                                    chessWindow.reset();
+                                    chessWindow.putTextAreaText(u.toString());
+                                    if (a.getArbitragedMatches().size() > 0){
+                                        cp =a.getArbitragedMatches().get(0).getState().getBoardPieces();
+                                        chessWindow.colocaPeces(cp);
+                                    }
+                                    chessWindow.setVisible(true);
                                     break;
                             }
-                            // TODO: implement it
                         }
                     });
                 }

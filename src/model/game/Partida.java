@@ -36,31 +36,26 @@ public class Partida {
         player2 = p2;
         arbiter = arb;
         state =  et;
-        boolean p1HasKing = state.iswKingPieceAlive();
-        boolean p2HasKing = state.isbKingPieceAlive();
+        boolean p1HasKing = state.isWhiteKingPieceAlive();
+        boolean p2HasKing = state.isBlackKingPieceAlive();
         boolean matchNotFinished = p1HasKing &&  p2HasKing;
-
         if (matchNotFinished){
             winner = null;
-            player2.addMatchNotFinished();
-            player1.addMatchNotFinished();
         }else if (p1HasKing){
             winner = player1;
-            player1.addMatchWon();
         }else{
             winner = player2;
-            player2.addMatchWon();
         }
-        player1.addMatchPlayed();
-        player2.addMatchPlayed();
-        arbiter.addArbitedMatch();
     }
-
     /**
      * Returns the Player that has won the match. Returns null in case nobody has finished the game yet.
      * @return
      */
     public Player getWinner(){
         return winner;
+    }
+
+    public EstatTauler getState(){
+        return state;
     }
 }

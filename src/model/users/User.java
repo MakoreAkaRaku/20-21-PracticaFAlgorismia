@@ -1,10 +1,13 @@
 package model.users;
+
+import java.util.Comparator;
+
 /**
  * Classe que representa un usuari de l'aplicació.
  * 
  * @author Bernat Galmés Rubert
  */
-public abstract class User {
+public abstract class User{
 
     private long id;
     private String name;
