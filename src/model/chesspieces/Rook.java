@@ -6,7 +6,7 @@ import java.awt.Toolkit;
  * It can be drawn by calling it's inherited methods from the ChessPiece class.
  */
 public class Rook extends ChessPiece{
-    private static final String  RPATH = "Torre.gif";
+    private static final String  RPATH = "Torre.png";
 
     public Rook() {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(RPATH)),

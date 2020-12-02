@@ -6,7 +6,7 @@ import java.awt.Toolkit;
  * It can be drawn by calling it's inherited methods from the ChessPiece class.
  */
 public class Queen extends ChessPiece{
-    private static final String  QPATH = "Reina.gif";
+    private static final String  QPATH = "Reina.png";
     public Queen() {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(QPATH)),
                 Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(QPATH)));

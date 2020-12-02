@@ -6,7 +6,7 @@ import java.awt.Toolkit;
  * It can be drawn by calling it's inherited methods from the ChessPiece class.
  */
 public class Knight extends ChessPiece{
-    private static final String  KNPATH = "Cavall.gif";
+    private static final String  KNPATH = "Cavall.png";
     public Knight() {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(KNPATH)),
                 Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(KNPATH)));

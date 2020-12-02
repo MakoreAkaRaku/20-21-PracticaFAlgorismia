@@ -6,7 +6,7 @@ import java.awt.Toolkit;
  * It can be drawn by calling it's inherited methods from the ChessPiece class.
  */
 public class Bishop extends ChessPiece{
-    private static String BPATH = "Alfil.gif";
+    private static String BPATH = "Alfil.png";
     public Bishop() {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(BPATH)),
                 Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(BPATH)));

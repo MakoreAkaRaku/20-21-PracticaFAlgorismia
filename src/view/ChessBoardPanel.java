@@ -23,6 +23,8 @@ public class ChessBoardPanel extends JPanel {
     private int Item_Heigth;
     private Casella caselles[][];
     private int size;
+    private Color White = new Color(231,208,167);
+    private Color Black = new Color(167,126,92);
 
     /**
      * Costructor del Tauler del joc Reserva espai per a totes les caselles
@@ -51,10 +53,11 @@ public class ChessBoardPanel extends JPanel {
             for (int j = 0; j < this.size; j++) {// pintam la element j de la fila i
                 Rectangle2D.Float r = new Rectangle2D.Float(x, y, Item_Width, Item_Heigth);
                 Color CFons;
+
                 if (oddRow) {
-                    CFons = (j % 2 == 0) ? Color.WHITE : Color.BLACK;
+                    CFons = (j % 2 == 0) ? White : Black;
                 } else {
-                    CFons = (j % 2 != 0) ? Color.WHITE : Color.BLACK;
+                    CFons = (j % 2 != 0) ? White : Black;
                 }
                 cas[i][j] = new Casella(r, CFons);
                 x += Item_Width;
@@ -82,8 +85,9 @@ public class ChessBoardPanel extends JPanel {
 
                 Image img_pesa = caselles[i][j].getImg_pesa();
 
+                int margen = 10;
                 if (img_pesa != null) {
-                    g2d.drawImage(img_pesa, x, y, this.Item_Width, this.Item_Heigth, caselles[i][j].getColorFons(), this);
+                    g2d.drawImage(img_pesa, x + margen/2, y + margen/2, this.Item_Width - margen, this.Item_Heigth -margen , caselles[i][j].getColorFons(), this);
                 }
 
                 // switch boolean
@@ -114,7 +118,7 @@ public class ChessBoardPanel extends JPanel {
      */
     public void colocarPesa(int col, int fila, CellDrawable drawable) {
         Casella c = caselles[col][fila];
-        if (c.getColorFons() == Color.WHITE) {
+        if (c.getColorFons() == White) {
             caselles[col][fila].setImage(drawable.FiguraFBlanc());
         } else {
             caselles[col][fila].setImage(drawable.FiguraFNegre());
