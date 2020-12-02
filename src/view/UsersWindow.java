@@ -197,7 +197,7 @@ public class UsersWindow extends JFrame {
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Algoritmia. Marc Roman i Antoni Font");
+        setTitle("Projecte Algoritmia");
 
         jTable1.setModel(getTableData());
         jTable1.setShowGrid(true);
@@ -230,13 +230,13 @@ public class UsersWindow extends JFrame {
 
     private void jButton1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         float[] accesosperclasse = users.meanAccessByClass();
-        String text = "* Nombre mitj accessos arbitres: " + accesosperclasse[0];
-        text += "\n* Nombre mitj accessos socis: " + accesosperclasse[1];
-        text += "\n* Nombre mitj accessos jugadors: " + accesosperclasse[2];
-        text += "\n* Usuari amb mÃ©s accessos: " + users.findUserWithMaxAccess();
-        text += "\n* Usuari amb mÃ©s partides guanyades: " + users.findUserWithMaxWins();
-        text += "\n* Usuari que no han accedit mai: " + String.join(",", users.findUsersWithNoAccess());
-        JOptionPane.showMessageDialog(this, text);
+        String text = "> Nombre mitjà accessos arbitres: " + accesosperclasse[0];
+        text += "\n> Nombre mitjà accessos socis: " + accesosperclasse[1];
+        text += "\n> Nombre mitjà accessos jugadors: " + accesosperclasse[2];
+        text += "\n> Usuari amb més accessos: " + users.findUserWithMaxAccess();
+        text += "\n> Usuari amb més partides guanyades: " + users.findUserWithMaxWins();
+        text += "\n> Usuaris que no han accedit mai: " + String.join(",", users.findUsersWithNoAccess());
+        JOptionPane.showMessageDialog(this, text, "RESUM DADES USUARIS",JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_jButton1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

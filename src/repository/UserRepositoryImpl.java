@@ -77,7 +77,7 @@ public class UserRepositoryImpl implements UsersRepository {
                 u = userList.get(i);
             }
         }
-        return u.getName();
+        return u.getName() + " " +  u.getSurname();
     }
 
 
@@ -88,7 +88,7 @@ public class UserRepositoryImpl implements UsersRepository {
         int listSize = userList.size();
         for (int i = 0;i < listSize; i++){
             if (userList.get(i).getNumAccess() == 0){
-                usersNames.add(userList.get(i).getName());
+                usersNames.add(userList.get(i).getName() + " " + userList.get(i).getSurname());
             }
         }
         return usersNames;
@@ -107,6 +107,6 @@ public class UserRepositoryImpl implements UsersRepository {
                 }
             }
         }
-        return pwithMostMatchesWon.getName();
+        return pwithMostMatchesWon.getName() + " " + pwithMostMatchesWon.getSurname();
     }
 }
