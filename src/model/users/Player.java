@@ -115,7 +115,8 @@ public class Player extends User {
         String str;
         str = "Nom Complet: "+getName()+" "+getSurname()+"\nNombre de Accesos a la plataforma: "+getNumAccess()+
                 "\nNombre de partides jugades: "+numPlayedMatches+"\nNombre de partides guanyades: "+numWonMatches+
-                "\nNombre de partides no finalitzades: "+numNotFinishedMatches;
+                "\nNombre de partides no finalitzades: "+numNotFinishedMatches+"\nNombre de partides perdudes: "+
+                numMatchesLost;
         return str;
     }
 }
