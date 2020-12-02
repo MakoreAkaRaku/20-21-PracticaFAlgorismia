@@ -5,25 +5,49 @@ import model.game.Partida;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents an Arbiter that at the same time is a User from the platform.
+ */
 public class Arbiter extends User{
-//Crear Llista de partides
+
     private long numArbitragedMatches;
     private List<Partida> arbitragedMatches;
+
+    /**
+     * Defines an Arbiter as a User with the capability to Arbitrage
+     * @param id
+     * @param name
+     * @param surname
+     * @param email
+     * @param numAccess
+     */
     public  Arbiter(long id, String name, String surname, String email, long numAccess) {
         super(id, name, surname, email, numAccess);
         this.numArbitragedMatches = 0;
         arbitragedMatches = new ArrayList<>();
     }
 
+    /**
+     * Increment in 1 the number of arbitraged Matches and adds the arbitraged Match to the List of Matches.
+     * @param match
+     */
     public void addArbitragedMatch(Partida match){
         arbitragedMatches.add(match);
         numArbitragedMatches++;
     }
 
+    /**
+     * Returns the number of Arbitraged Matches.
+     * @return
+     */
     public long getNumArbitragedMatches(){
         return numArbitragedMatches;
     }
 
+    /**
+     * Returns the Match List of the Arbiter's arbitraged ones.
+     * @return
+     */
     public List<Partida> getArbitragedMatches() {
         return arbitragedMatches;
     }

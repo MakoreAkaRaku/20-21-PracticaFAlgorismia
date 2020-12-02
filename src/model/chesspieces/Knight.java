@@ -1,7 +1,10 @@
 package model.chesspieces;
+import java.awt.Toolkit;
 
-import java.awt.*;
-
+/**
+ * This class represents the Knight from the Chess Board Game.
+ * It can be drawn by calling it's inherited methods from the ChessPiece class.
+ */
 public class Knight extends ChessPiece{
     private static final String  KNPATH = "Cavall.gif";
     public Knight() {

@@ -133,7 +133,7 @@ public class UsersWindow extends JFrame {
                 Object value = table.getValueAt(row, column);
                 if (value instanceof JButton) {
                     /*perform a click event*/
-                    User u = users.findAll().get(row); // TODO: consulta usuari seleccionar, adaptar a la teva implementació
+                    User u = users.findAll().get(row);
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         @Override
                         public void run() {
@@ -144,8 +144,8 @@ public class UsersWindow extends JFrame {
                                     Player p = (Player) u;
                                     chessWindow.reset();
                                     chessWindow.putTextAreaText(u.toString());
-                                    if (p.getMatchesPlayed().size() > 0){
-                                        cp =p.getMatchesPlayed().get(0).getState().getBoardPieces();
+                                    if (p.getPlayedMatches().size() > 0){
+                                        cp =p.getPlayedMatches().get(0).getState().getBoardPieces();
                                         chessWindow.colocaPeces(cp);
                                     }
                                     chessWindow.setVisible(true);

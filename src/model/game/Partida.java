@@ -14,7 +14,6 @@ import model.users.Player;
  */
 public class Partida {
     private long id;
-    private EstatTauler estatActual;
     private Player player1;
     private Player player2;
     private Arbiter arbiter;
@@ -47,6 +46,7 @@ public class Partida {
             winner = player2;
         }
     }
+
     /**
      * Returns the Player that has won the match. Returns null in case nobody has finished the game yet.
      * @return
@@ -55,7 +55,19 @@ public class Partida {
         return winner;
     }
 
+    /**
+     * Returns the State of the Board.
+     * @return
+     */
     public EstatTauler getState(){
         return state;
+    }
+
+    /**
+     * Returns the id of the Match.
+     * @return
+     */
+    public long getId(){
+        return id;
     }
 }

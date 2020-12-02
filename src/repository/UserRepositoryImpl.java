@@ -6,12 +6,20 @@ import model.users.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents which operations can you do with a User's List.
+ */
 public class UserRepositoryImpl implements UsersRepository {
     private List<User> userList;
 
+    /**
+     * Defines UserRepositoryImpl by giving a User's List.
+     * @param users
+     */
     public UserRepositoryImpl(List<User> users){
         this.userList = users;
     }
+
 
     @Override
     public User findOne(long id) throws NotFoundException {
@@ -72,9 +80,10 @@ public class UserRepositoryImpl implements UsersRepository {
         return u.getName();
     }
 
+
     @Override
     public List<String> findUsersWithNoAccess() {
-        List<String> usersNames = new ArrayList<String>();
+        List<String> usersNames = new ArrayList<>();
         User u = null;
         int listSize = userList.size();
         for (int i = 0;i < listSize; i++){
@@ -93,7 +102,7 @@ public class UserRepositoryImpl implements UsersRepository {
         for (int i = 0; i < listSize; i++){
             if (userList.get(i) instanceof Player){
                 pTemp = (Player) userList.get(i);
-                if (pwithMostMatchesWon.getNumMatchesWon() < pTemp.getNumMatchesWon()){
+                if (pwithMostMatchesWon.getNumWonMatches() < pTemp.getNumWonMatches()){
                     pwithMostMatchesWon = pTemp;
                 }
             }

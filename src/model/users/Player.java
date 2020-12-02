@@ -1,18 +1,21 @@
 package model.users;
 
 import model.game.Partida;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents a Player that at the same time is a User from the platform.
+ */
 public class Player extends User {
 
-    private long numMatchesPlayed;
-    private long numMatchesNotFinished;
-    private long numMatchesWon;
+    private long numPlayedMatches;
+    private long numNotFinishedMatches;
+    private long numWonMatches;
     private long numMatchesLost;
-    private List<Partida> matchesPlayed;
+    private List<Partida> playedMatches;
     /**
+     * Defines a Player as a User with capabilities of playing matches, where he can win, loose or not finish the match.
      * @param id
      * @param name
      * @param surname
@@ -21,48 +24,80 @@ public class Player extends User {
      */
     public Player(long id, String name, String surname, String email, long numAccess) {
         super(id, name, surname, email, numAccess);
-        numMatchesPlayed = 0;
-        numMatchesNotFinished = 0;
+        numPlayedMatches = 0;
+        numNotFinishedMatches = 0;
         numMatchesLost = 0;
-        numMatchesWon = 0;
-        matchesPlayed = new ArrayList<>();
+        numWonMatches = 0;
+        playedMatches = new ArrayList<>();
     }
 
+    /**
+     * Increment in 1 the counter of Matches not Finished of the Player.
+     */
     public void addMatchNotFinished() {
-        numMatchesNotFinished++;
+        numNotFinishedMatches++;
     }
 
+    /**
+     * Increment in 1 the counter of Matches Won of the Player.
+     */
     public void addMatchWon() {
-        numMatchesWon++;
+        numWonMatches++;
     }
 
+    /**
+     * Increment in 1 the counter of Matches Lost of the Player.
+     */
     public void addMatchLost() {
         numMatchesLost++;
     }
 
+    /**
+     * Increment in 1 the counter of Matches Played of the Player and Adds the Match to the Match List.
+     */
     public void addMatchPlayed(Partida matchPlayed) {
-        matchesPlayed.add(matchPlayed);
-        numMatchesPlayed++;
+        playedMatches.add(matchPlayed);
+        numPlayedMatches++;
     }
 
-    public long getNumMatchesPlayed() {
-        return numMatchesPlayed;
+    /**
+     * Returns the number of Played Matches.
+     * @return
+     */
+    public long getNumPlayedMatches() {
+        return numPlayedMatches;
     }
 
-    public long getNumMatchesNotFinished() {
-        return numMatchesNotFinished;
+    /**
+     * Returns the number of Not Finished Matches.
+     * @return
+     */
+    public long getNumNotFinishedMatches() {
+        return numNotFinishedMatches;
     }
 
-    public long getNumMatchesWon() {
-        return numMatchesWon;
+    /**
+     * Returns the number of Won Matches.
+     * @return
+     */
+    public long getNumWonMatches() {
+        return numWonMatches;
     }
 
-    public long getNumMatchesLost() {
+    /**
+     * Returns the number of Lost Matches
+     * @return
+     */
+    public long getNumLostMatches() {
         return numMatchesLost;
     }
 
-    public List<Partida> getMatchesPlayed() {
-        return matchesPlayed;
+    /**
+     * Returns a Match List where the Player has played.
+     * @return
+     */
+    public List<Partida> getPlayedMatches() {
+        return playedMatches;
     }
 
     @Override
@@ -70,12 +105,17 @@ public class Player extends User {
         return "Player";
     }
 
+    /**
+     * Returns the Player characteristic into a String, containing it's full name, numAccess,NumPlayedMatches,
+     * NumLostMatches,NumWonMatches and NumNotFinishedMatches.
+     * @return
+     */
     @Override
     public String toString() {
         String str;
         str = "Nom Complet: "+getName()+" "+getSurname()+"\nNombre de Accesos a la plataforma: "+getNumAccess()+
-                "\nNombre de partides jugades: "+numMatchesPlayed+"\nNombre de partides guanyades: "+numMatchesWon+
-                "\nNombre de partides no finalitzades: "+ numMatchesNotFinished;
+                "\nNombre de partides jugades: "+numPlayedMatches+"\nNombre de partides guanyades: "+numWonMatches+
+                "\nNombre de partides no finalitzades: "+numNotFinishedMatches;
         return str;
     }
 }

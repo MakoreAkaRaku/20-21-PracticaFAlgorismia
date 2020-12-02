@@ -5,7 +5,7 @@ import utils.PositionCode;
 
 /**
  * Representació de l'estat d'un tauler d'escacs en un instant donat.
- * 
+ *
  * Aquesta classe conté la posició de les peces sobre un tauler d'escacs
  * en un moment donat.
  * 
@@ -17,6 +17,12 @@ public class EstatTauler{
     private boolean whiteKingPieceAlive;
     private boolean blackKingPieceAlive;
 
+    /**
+     * Defines the board state by having a bidimensional array of ChessPieces, which form
+     * the Chess pieces position into the board and two booleans that it tells if there's a white or black king into the
+     * board.
+     * @param state
+     */
     public EstatTauler(String state){
         boardPieces =  new ChessPiece[BOARDSIZE][BOARDSIZE];
         whiteKingPieceAlive = false;
@@ -50,22 +56,32 @@ public class EstatTauler{
         }
     }
 
-
+    /**
+     * Returns true if there's a black king alive.
+     * If not, returns false.
+     * @return
+     */
     public boolean isBlackKingPieceAlive() {
         return blackKingPieceAlive;
     }
 
+    /**
+     * Returns true if there's a white king alive.
+     * If not, returns false.
+     * @return
+     */
     public boolean isWhiteKingPieceAlive() {
         return whiteKingPieceAlive;
     }
 
     /**
-     * Returns the chess piece named on the string.
-     * @param pieceName
+     * Returns the chess piece type on the string.
+     * In case Chess piece type could not be identified, returns null.
+     * @param pieceType
      * @return
      */
-    private ChessPiece getPieceType(String pieceName){
-        switch (pieceName){
+    private ChessPiece getPieceType(String pieceType){
+        switch (pieceType){
             case "bishop":
                 return new Bishop();
             case "kight":
@@ -83,6 +99,11 @@ public class EstatTauler{
         }
     }
 
+    /**
+     * Returns the bidimensional array of the loaded Chess Pieces into Table state, referring to the  position of the
+     * pieces inside the Chess Board.
+     * @return
+     */
     public ChessPiece[][] getBoardPieces() {
         return boardPieces;
     }
