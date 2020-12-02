@@ -56,7 +56,7 @@ public class ChessBoardWindow extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Chess");
+        setTitle("Dades Usuari");
         setAlwaysOnTop(true);
         setResizable(false);
 
