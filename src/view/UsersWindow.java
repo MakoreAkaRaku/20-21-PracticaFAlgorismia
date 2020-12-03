@@ -9,13 +9,9 @@ package view;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.SwingConstants;
 
 import model.chesspieces.ChessPiece;
 import model.users.Arbiter;
@@ -29,7 +25,7 @@ import repository.UsersRepository;
  * @author Bernat GalmÃ©s Rubert
  */
 public class UsersWindow extends JFrame {
-
+    private final UsersWindow uW = this;
     private UsersRepository users;
 
     private ChessBoardWindow chessWindow;
@@ -87,6 +83,7 @@ public class UsersWindow extends JFrame {
         @Override
         public Object getValueAt(final int rowIndex, final int columnIndex) {
             User user = users.findAll().get(rowIndex);
+            String userType;
             Object o = null;
             switch (columnIndex){
                 case 0:
@@ -102,8 +99,11 @@ public class UsersWindow extends JFrame {
                     o = user.getType();
                     break;
                 case 4:
-                    if (user.getType() == "Arbiter" || user.getType() == "Player"){
-                        o = new JButton("About...");
+                    userType = user.getType();
+                    if (userType == "Player"){
+                        o = new JButton("Mes info");
+                    }else if( userType == "Arbiter"){
+                        o = new JButton("Resum");
                     }
                     break;
             }
@@ -118,9 +118,7 @@ public class UsersWindow extends JFrame {
      * 
      */
     private class JTableUsersButtonMouseListener extends MouseAdapter {
-
         private final JTable table;
-
         public JTableUsersButtonMouseListener(JTable table) {
             this.table = table;
         }
@@ -138,10 +136,9 @@ public class UsersWindow extends JFrame {
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            ChessPiece[][] cp;
                             switch (u.getType()){
                                 case "Player":
-                                    //
+                                    ChessPiece[][] cp;
                                     Player p = (Player) u;
                                     chessWindow.reset();
                                     chessWindow.putTextAreaText(u.toString());
@@ -153,13 +150,7 @@ public class UsersWindow extends JFrame {
                                     break;
                                 case "Arbiter":
                                     Arbiter a = (Arbiter) u;
-                                    chessWindow.reset();
-                                    chessWindow.putTextAreaText(u.toString());
-                                    if (a.getArbitragedMatches().size() > 0){
-                                        cp =a.getArbitragedMatches().get(0).getState().getBoardPieces();
-                                        chessWindow.colocaPeces(cp);
-                                    }
-                                    chessWindow.setVisible(true);
+                                    JOptionPane.showMessageDialog(uW, a, "Resum de "+a.getName(),JOptionPane.PLAIN_MESSAGE);
                                     break;
                             }
                         }
@@ -230,11 +221,11 @@ public class UsersWindow extends JFrame {
 
     private void jButton1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         float[] accesosperclasse = users.meanAccessByClass();
-        String text = "> Nombre mitjà accessos arbitres: " + accesosperclasse[0];
-        text += "\n> Nombre mitjà accessos socis: " + accesosperclasse[1];
-        text += "\n> Nombre mitjà accessos jugadors: " + accesosperclasse[2];
-        text += "\n> Usuari amb més accessos: " + users.findUserWithMaxAccess();
-        text += "\n> Usuari amb més partides guanyades: " + users.findUserWithMaxWins();
+        String text = "> Nombre mitj accessos arbitres: " + accesosperclasse[0];
+        text += "\n> Nombre mitj accessos socis: " + accesosperclasse[1];
+        text += "\n> Nombre mitj accessos jugadors: " + accesosperclasse[2];
+        text += "\n> Usuari amb mes accessos: " + users.findUserWithMaxAccess();
+        text += "\n> Usuari amb mes partides guanyades: " + users.findUserWithMaxWins();
         text += "\n> Usuaris que no han accedit mai: " + String.join(",", users.findUsersWithNoAccess());
         JOptionPane.showMessageDialog(this, text, "RESUM DADES USUARIS",JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_jButton1MouseClicked

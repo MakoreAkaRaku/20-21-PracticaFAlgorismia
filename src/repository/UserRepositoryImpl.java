@@ -41,8 +41,8 @@ public class UserRepositoryImpl implements UsersRepository {
 
     @Override
     public float[] meanAccessByClass() {
-        float[] mean = new float[3]; //0 Arbiters mean, 1 Player mean, 2 User Mean.
-        int[] numOfTypes = new int[3]; // 0 Arbiters count, 1 Player count, 2 User count.
+        float[] mean = new float[3]; //0 Arbiters mean, 1 Member mean, 2 Player Mean.
+        int[] numOfTypes = new int[3]; // 0 Arbiters count, 1 Member count, 2 Player count.
         int listSize = userList.size();
         for (int i = 0; i < listSize; i++){
             switch (userList.get(i).getType()){
@@ -50,11 +50,11 @@ public class UserRepositoryImpl implements UsersRepository {
                     mean[0]+= userList.get(i).getNumAccess();
                     numOfTypes[0]++;
                     break;
-                case "Player":
+                case "Member":
                     mean[1]+= userList.get(i).getNumAccess();
                     numOfTypes[1]++;
                     break;
-                case "Member":
+                case "Player":
                     mean[2]+= userList.get(i).getNumAccess();
                     numOfTypes[2]++;
                     break;
