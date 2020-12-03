@@ -25,7 +25,7 @@ import repository.UsersRepository;
  * @author Bernat Galmés Rubert
  */
 public class UsersWindow extends JFrame {
-    private final UsersWindow uW = this;
+    private final UsersWindow uW = this;    //Made by Marc and Toni.
     private UsersRepository users;
 
     private ChessBoardWindow chessWindow;
