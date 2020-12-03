@@ -7,8 +7,8 @@ import java.awt.Toolkit;
  */
 public class Queen extends ChessPiece{
     private static final String  QPATH = "Reina.png";
-    public Queen() {
+    public Queen(boolean isWhite) {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(QPATH)),
-                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(QPATH)));
+                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(QPATH)), isWhite);
     }
 }

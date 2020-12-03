@@ -8,8 +8,8 @@ import java.awt.Toolkit;
 public class Rook extends ChessPiece{
     private static final String  RPATH = "Torre.png";
 
-    public Rook() {
+    public Rook(boolean isWhite) {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(RPATH)),
-                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(RPATH)));
+                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(RPATH)), isWhite);
     }
 }

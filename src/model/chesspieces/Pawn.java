@@ -8,8 +8,8 @@ import java.awt.Toolkit;
 public class Pawn extends ChessPiece{
     private static final String  PPATH = "Gat.png";
 
-    public Pawn() {
+    public Pawn(boolean isWhite) {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(PPATH)),
-                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(PPATH)));
+                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(PPATH)), isWhite);
     }
 }

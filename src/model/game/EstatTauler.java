@@ -34,6 +34,7 @@ public class EstatTauler{
      * Defines the state of the loaded board from memory by reading string state and tokenizated.
      */
     private void defineBoardState(String st){
+        boolean isWhite = false;
         PositionCode position;
         ChessPiece piece;
         int row = 0;
@@ -44,10 +45,15 @@ public class EstatTauler{
             position = new PositionCode(pieceData[0]);      //Getting the position of The piece.
             row = position.getRow() - 1;
             column = position.getColumn() - 1;
-            piece = getPieceType(pieceData[1]);             //Getting piece Type.
+            if (pieceData[2].equals("0")){
+                isWhite = true;
+            }else{
+                isWhite = false;
+            }
+            piece = getPieceType(pieceData[1],isWhite);             //Getting piece Type.
             boardPieces[row][column] = piece;
             if (piece instanceof King){                     //Look for King's chess piece.
-                if (pieceData[2].equals("0")){
+                if (isWhite){
                     whiteKingPieceAlive = true;
                 }else{
                     blackKingPieceAlive = true;
@@ -80,20 +86,20 @@ public class EstatTauler{
      * @param pieceType
      * @return
      */
-    private ChessPiece getPieceType(String pieceType){
+    private ChessPiece getPieceType(String pieceType, boolean isWhite){
         switch (pieceType){
             case "bishop":
-                return new Bishop();
+                return new Bishop(isWhite);
             case "kight":
-                return new Knight();
+                return new Knight(isWhite);
             case "pawnn":
-                return new Pawn();
+                return new Pawn(isWhite);
             case "king":
-                return new King();
+                return new King(isWhite);
             case "queen":
-                return new Queen();
+                return new Queen(isWhite);
             case "rook":
-                return new Rook();
+                return new Rook(isWhite);
             default:
                 return null;
         }

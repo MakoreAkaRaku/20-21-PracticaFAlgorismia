@@ -11,24 +11,21 @@ public abstract class ChessPiece implements CellDrawable {
      * This static class represents the Resources needed to get any Image from any Chess Piece.
      */
     public static class Resources{
-        public static final String BLACKPATH = "resources/imatges/Fons_Negre/";
-        public static final String WHITEPATH = "resources/imatges/Fons_Blanc/";
+        public static final String BLACKPATH = "resources/imatges/Peces_Negres/";
+        public static final String WHITEPATH = "resources/imatges/Peces_Blanques/";
     }
-    private Image white;
-    private Image black;
+    private Image pieceImage;
 
-    public ChessPiece(Image w, Image b){
-        white = w;
-        black = b;
-    }
-
-    @Override
-    public Image FiguraFBlanc(){
-        return white;
+    public ChessPiece(Image w,Image b, boolean isWhite){
+        if (isWhite){
+            pieceImage = w;
+        }else{
+            pieceImage = b;
+        }
     }
 
     @Override
-    public Image FiguraFNegre(){
-        return black;
+    public Image getPieceImage() {
+        return pieceImage;
     }
 }

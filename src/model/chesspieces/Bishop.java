@@ -7,8 +7,8 @@ import java.awt.Toolkit;
  */
 public class Bishop extends ChessPiece{
     private static String BPATH = "Alfil.png";
-    public Bishop() {
+    public Bishop(boolean isWhite) {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(BPATH)),
-                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(BPATH)));
+                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(BPATH)),isWhite);
     }
 }

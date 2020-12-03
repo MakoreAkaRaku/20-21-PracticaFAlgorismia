@@ -9,8 +9,5 @@ import java.awt.Image;
  */
 public interface CellDrawable {
 
-    public Image FiguraFBlanc();
-
-    public Image FiguraFNegre();
-
+    public Image getPieceImage();
 }

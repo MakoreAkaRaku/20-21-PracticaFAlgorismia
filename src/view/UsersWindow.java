@@ -43,7 +43,7 @@ public class UsersWindow extends JFrame {
         TableCellRenderer buttonRenderer = new JTableButtonRenderer();
         jTable1.getColumn("botó").setCellRenderer(buttonRenderer);
         jTable1.addMouseListener(new JTableUsersButtonMouseListener(jTable1));
-        chessWindow = new ChessBoardWindow(9);
+        chessWindow = new ChessBoardWindow(8);
         chessWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 

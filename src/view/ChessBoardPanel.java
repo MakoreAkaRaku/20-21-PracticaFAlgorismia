@@ -118,11 +118,7 @@ public class ChessBoardPanel extends JPanel {
      */
     public void colocarPesa(int col, int fila, CellDrawable drawable) {
         Casella c = caselles[col][fila];
-        if (c.getColorFons() == White) {
-            caselles[col][fila].setImage(drawable.FiguraFBlanc());
-        } else {
-            caselles[col][fila].setImage(drawable.FiguraFNegre());
-        }
+            caselles[col][fila].setImage(drawable.getPieceImage());
         this.removeAll();
         this.updateUI();
         this.repaint();

@@ -7,9 +7,9 @@ import java.awt.Toolkit;
  */
 public class King extends ChessPiece{
     private static final String KPATH = "Rei.png";
-    public King() {
+    public King(boolean isWhite) {
         super(Toolkit.getDefaultToolkit().createImage(Resources.WHITEPATH.concat(KPATH)),
-                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(KPATH)));
+                Toolkit.getDefaultToolkit().createImage(Resources.BLACKPATH.concat(KPATH)),isWhite);
     }
 
 }
