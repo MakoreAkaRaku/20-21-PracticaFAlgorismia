@@ -36,22 +36,6 @@ public class Arbiter extends User{
         numArbitragedMatches++;
     }
 
-    /**
-     * Returns the number of Arbitraged Matches.
-     * @return
-     */
-    public long getNumArbitragedMatches(){
-        return numArbitragedMatches;
-    }
-
-    /**
-     * Returns the Match List of the Arbiter's arbitraged ones.
-     * @return
-     */
-    public List<Partida> getArbitragedMatches() {
-        return arbitragedMatches;
-    }
-
     @Override
     public String getType(){
         return "Arbiter";

@@ -23,8 +23,8 @@ public class ChessBoardPanel extends JPanel {
     private int Item_Heigth;
     private Casella caselles[][];
     private int size;
-    private Color White = new Color(231,208,167);
-    private Color Black = new Color(167,126,92);
+    private static Color WHITE = new Color(231,208,167);
+    private static Color BLACK = new Color(167,126,92);
 
     /**
      * Costructor del Tauler del joc Reserva espai per a totes les caselles
@@ -55,9 +55,9 @@ public class ChessBoardPanel extends JPanel {
                 Color CFons;
 
                 if (oddRow) {
-                    CFons = (j % 2 == 0) ? White : Black;
+                    CFons = (j % 2 == 0) ? WHITE : BLACK;
                 } else {
-                    CFons = (j % 2 != 0) ? White : Black;
+                    CFons = (j % 2 != 0) ? WHITE : BLACK;
                 }
                 cas[i][j] = new Casella(r, CFons);
                 x += Item_Width;

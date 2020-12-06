@@ -9,7 +9,6 @@ public class ChessBoardWindow extends javax.swing.JFrame {
     private final int INI_BOARD_SIZE;
 
     private ChessBoardPanel tauler;
-    private String[] t_peces = {"Alfil", "Cagat", "Cavall", "Gat", "Rey", "Reina", "Torre"};
 
     public ChessBoardWindow(int ini_size) {
         INI_BOARD_SIZE = ini_size;

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * This class represents a Player that at the same time is a User from the platform.
  */
-public class Player extends User {
+public class  Player extends User {
 
     private long numPlayedMatches;
     private long numNotFinishedMatches;
@@ -61,35 +61,11 @@ public class Player extends User {
     }
 
     /**
-     * Returns the number of Played Matches.
-     * @return
-     */
-    public long getNumPlayedMatches() {
-        return numPlayedMatches;
-    }
-
-    /**
-     * Returns the number of Not Finished Matches.
-     * @return
-     */
-    public long getNumNotFinishedMatches() {
-        return numNotFinishedMatches;
-    }
-
-    /**
      * Returns the number of Won Matches.
      * @return
      */
     public long getNumWonMatches() {
         return numWonMatches;
-    }
-
-    /**
-     * Returns the number of Lost Matches
-     * @return
-     */
-    public long getNumLostMatches() {
-        return numMatchesLost;
     }
 
     /**

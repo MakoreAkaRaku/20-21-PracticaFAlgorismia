@@ -39,10 +39,6 @@ public class Casella extends JPanel {
         g2d.draw(Rcasella);
     }
 
-    public Rectangle2D.Float getCasella() {
-        return Rcasella;
-    }
-
     public Color getColorFons() {
         return colorFons;
     }
